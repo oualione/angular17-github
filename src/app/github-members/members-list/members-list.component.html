@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mt-4">List of Users</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <form class="d-flex">
+          <input class="form-control me-2" name="searchField" [(ngModel)]="searchField" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-primary" type="submit" (click)="SearchUserbyName()">Search</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row mt-4" *ngIf="users.length">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let user of users">
+        <app-card [login]="user.login" [image]="user.avatar_url"></app-card>
+      </div>
+      <!-- Add more users as needed -->
+    </div>
+
+    <div class="row mt-5" *ngIf="!users.length">
+      <div class="col-md-6 mx-auto">
+        <div class="text-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-2">Loading...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
